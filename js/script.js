@@ -8,19 +8,22 @@ const elementos = [];
 function addToList(text) {
     elementos.push(text)
     const li = document.createElement('li')
-    li.appendChild(document.createTextNode(`ELEMENTO: ${text}`))
+    li.innerHTML = `ELEMENTO: ${text}`
     lista.appendChild(li)
 }
 
 addElement.addEventListener('click', (e) => {
     e.preventDefault();
     const newElement = prompt('Escribe elementos a agregar');
-    addToList(newElement);
+    if (newElement) {
+        addToList(newElement);
+    }
 });
 
 
 removeElement.addEventListener('click', (e) => {
     if (elementos.length > 0) {
+        elementos.pop();
         lista.removeChild(lista.lastElementChild)
     }
 })
